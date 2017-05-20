@@ -1,7 +1,11 @@
+# Create a bar plot of quantified Western blot band intensities for CD3 subunits using ggplot2.
+# TCRzeta, CD3 epsilon, and CD3 gamma are plotted separately.
+
 library(ggplot2)
 
 setwd('C:\\Users\\jmb\\Desktop\\LabFiles\\plcgpaper\\WBs')
 
+# Read in data and make a single data frame including quant data for all three proteins
 dat = read.table('CD3wbquantdata.txt', sep='\t', header=TRUE, colClasses = c('numeric','character','character','character','character'))
 
 std <- function(x) sd(x)/sqrt(length(x))
@@ -22,7 +26,7 @@ dat2 = as.data.frame(
 	)
 )
 
-###separate plots for each protein
+### Make separate plots for each protein
 ###	TCRz
 datTCRz = dat2[which(dat2$prot=='TCRz'),]
 
@@ -50,8 +54,8 @@ ggplot(data = datTCRz, aes(x = time, y = ratio, fill = geno, width = 0.6)) +
 		axis.line.y = element_line(color='black', size=0.6),
 		axis.text.x = element_text(colour='black', size=19),
 		axis.text.y = element_text(colour='black', size=19),
-		axis.title.x = element_text(margin=margin(t=0, r=0, b=10.8, l=0), size=26),  #I don't think this is doing anything
-		axis.title.y = element_text(margin=margin(t=0, r=10.5, b=0, l=0), size=26),  #ditto
+		axis.title.x = element_text(margin=margin(t=0, r=0, b=10.8, l=0), size=26),
+		axis.title.y = element_text(margin=margin(t=0, r=10.5, b=0, l=0), size=26),
 		axis.ticks = element_blank(),
 		legend.position = c(.85,.94),
 		legend.text = element_text(size = 19),
@@ -84,8 +88,8 @@ ggplot(data = datCD3e, aes(x = time, y = ratio, fill = geno, width = 0.6)) +
 		axis.line.y = element_line(color='black', size=0.6),
 		axis.text.x = element_text(colour='black', size=19),
 		axis.text.y = element_text(colour='black', size=19),
-		axis.title.x = element_text(margin=margin(t=0, r=0, b=10.8, l=0), size=26),  #I don't think this is doing anything
-		axis.title.y = element_text(margin=margin(t=0, r=10.5, b=0, l=0), size=26),  #ditto
+		axis.title.x = element_text(margin=margin(t=0, r=0, b=10.8, l=0), size=26),
+		axis.title.y = element_text(margin=margin(t=0, r=10.5, b=0, l=0), size=26),
 		axis.ticks = element_blank(),
 		legend.position = c(.85,.94),
 		legend.text = element_text(size = 19),
@@ -119,8 +123,8 @@ ggplot(data = datCD3g, aes(x = time, y = ratio, fill = geno, width = 0.6)) +
 		axis.line.y = element_line(color='black', size=0.6),
 		axis.text.x = element_text(colour='black', size=19),
 		axis.text.y = element_text(colour='black', size=19),
-		axis.title.x = element_text(margin=margin(t=0, r=0, b=10.8, l=0), size=26),  #I don't think this is doing anything
-		axis.title.y = element_text(margin=margin(t=0, r=10.5, b=0, l=0), size=26),  #ditto
+		axis.title.x = element_text(margin=margin(t=0, r=0, b=10.8, l=0), size=26),
+		axis.title.y = element_text(margin=margin(t=0, r=10.5, b=0, l=0), size=26),
 		axis.ticks = element_blank(),
 		legend.position = c(.85,.94),
 		legend.text = element_text(size = 19),
