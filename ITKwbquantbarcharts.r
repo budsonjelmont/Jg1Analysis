@@ -1,6 +1,10 @@
+# Script to create bar chart of Itk Western blot data
+
 library(ggplot2)
 
 setwd('C:\\Users\\jmb\\Desktop\\LabFiles\\plcgpaper\\WBs')
+
+# read in data and create a data frame. Quantitative data is assumed to be normalized to GAPDH.
 
 dat = read.table('ITKwbquantdata.txt', sep='\t', header=TRUE, colClasses = c('numeric','character','character','character','character'))
 
@@ -48,8 +52,8 @@ ggplot(data = datITK, aes(x = time, y = ratio, fill = geno, width = 0.6)) +
 		axis.line.y = element_line(color='black', size=0.6),
 		axis.text.x = element_text(colour='black', size=19),
 		axis.text.y = element_text(colour='black', size=19),
-		axis.title.x = element_text(margin=margin(t=0, r=0, b=10.8, l=0), size=26),  #I don't think this is doing anything
-		axis.title.y = element_text(margin=margin(t=0, r=10.5, b=0, l=0), size=26),  #ditto
+		axis.title.x = element_text(margin=margin(t=0, r=0, b=10.8, l=0), size=26),
+		axis.title.y = element_text(margin=margin(t=0, r=10.5, b=0, l=0), size=26),
 		axis.ticks = element_blank(),
 		legend.position = c(.85,.94),
 		legend.text = element_text(size = 19),
